@@ -1,4 +1,24 @@
+let rows = [];
+let columnLabels = [];
+let getEL = (selector) => document.querySelector(selector);
+let headerRow = getEL(`.headerRow`);
+let footerRow = getEL(`.footerRow`);
+
 let snipeITacceccoriesAPIUrl = `https://develop.snipeitapp.com/api/v1/accessories?limit=50&offset=0&order_number=null&sort=created_at&order=desc&expand=false`;
+
+let setLabelRows = (rowsToAffect) => {
+  rowsToAffect.forEach(labelRow => {
+    labelRow.innerHTML = ``;
+    columnLabels.forEach(label => {
+      let newColumn = document.createElement(`div`);
+      newColumn.classList.add(`headerColumn`);
+      newColumn.classList.add(`column`);
+      newColumn.innerHTML = label;
+
+      labelRow.append(newColumn);
+    })
+  })
+}
 
 let getAccessories = async () => {
     try {
@@ -15,10 +35,33 @@ let getAccessories = async () => {
         }).then(data => {
           if (data.rows && data.rows.length > 0) {
             data.rows.forEach((acc, accIndex) => {
-              // console.log(`Accessory`, acc);
-              let { id, name, image } = acc;
-              console.log({id, name, image});
+              let { id, name, image, category, company, location, supplier, min_qty, purchase_cost, model_number, purchase_date, qty, remaining_qty, manufacturer, user_can_checkout } = acc;
+              
+              let accessoryForTable = { 
+                id,
+                name,
+                image,
+                category: category.name,
+                company,
+                location: location.name,
+                supplier: supplier.name,
+                minimum: min_qty,
+                cost: purchase_cost,
+                model: model_number,
+                date: purchase_date,
+                quantity: qty,
+                remaining: remaining_qty,
+                manufacturer: manufacturer.name,
+                checkout: user_can_checkout 
+              };
+
+              console.log(accessoryForTable);
+
+              rows.push(accessoryForTable);
+              columnLabels = Object.keys(accessoryForTable);
             })
+           
+           setLabelRows([headerRow, footerRow]);
           }
           return data;
         })

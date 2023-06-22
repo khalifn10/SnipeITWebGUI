@@ -14,17 +14,26 @@ body {
 .row {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     width: 100%;
-    border: 1px solid white;
+    border: 3px solid white;
 }
 
 .headerRow, .footerRow {
     border-width: 2px;
 }
 
+.middleRow {
+    border-left-width: 2px;
+    border-right-width: 2px;
+}
+
 .column {
     text-align: center;
-    border-right: 1px solid white;
-    min-width: 150px;
+    border-right: 3px solid white;
+    min-width: 115px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
