@@ -2,14 +2,15 @@ let rows = [];
 let columnLabels = [];
 let getEL = (selector) => document.querySelector(selector);
 let headerRow = getEL(`.headerRow`);
+let middleRows = getEL(`.middleRows`);
 let footerRow = getEL(`.footerRow`);
 
 let snipeITacceccoriesAPIUrl = `https://develop.snipeitapp.com/api/v1/accessories?limit=50&offset=0&order_number=null&sort=created_at&order=desc&expand=false`;
 
-let setLabelRows = (rowsToAffect) => {
-  rowsToAffect.forEach(labelRow => {
+let setLabelRows = (labels, rowsToAffectArray) => {
+  rowsToAffectArray.forEach(labelRow => {
     labelRow.innerHTML = ``;
-    columnLabels.forEach(label => {
+    labels.forEach(label => {
       let newColumn = document.createElement(`div`);
       newColumn.classList.add(`headerColumn`);
       newColumn.classList.add(`column`);
@@ -54,14 +55,22 @@ let getAccessories = async () => {
                 manufacturer: manufacturer.name,
                 checkout: user_can_checkout 
               };
-
-              console.log(accessoryForTable);
-
+           
               rows.push(accessoryForTable);
               columnLabels = Object.keys(accessoryForTable);
             })
+
+            middleRows.innerHTML = ``;
+            rows.forEach(row => {
+              let newRow = document.createElement(`div`);
+              newRow.classList.add(`middleRow`);
+              newRow.classList.add(`row`);
+              let values = Object.values(row);
+              setLabelRows(values, [newRow]);
+              middleRows.append(newRow);
+            })
            
-           setLabelRows([headerRow, footerRow]);
+           setLabelRows(columnLabels, [headerRow, footerRow]);
           }
           return data;
         })
