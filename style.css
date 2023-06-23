@@ -48,3 +48,28 @@ body {
     max-height: 60px;
     overflow: hidden;
 }
+
+a {
+    color: skyblue;
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    text-decoration: none;
+}
+
+.pageHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pageHeaderRow h1 {
+    width: 75%;
+}
+
+.homePageLink {
+    width: 25%;
+}
