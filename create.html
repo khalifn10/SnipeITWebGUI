@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css" />
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./create.js"></script>
     <title>Create | SnipeIT</title>
 </head>
 <body>
@@ -16,8 +16,8 @@
   </div>
   
   <form action="submit" class="createForm" id="createForm">
-    <input type="text" name="name" id="name" placeholder="Enter Your Name" />
-    <input type="text" name="city" id="city" placeholder="Enter Your City" />
+    <input type="text" name="name" id="name" placeholder="Enter Your Name" class="formField" required />
+    <input type="text" name="city" id="city" placeholder="Enter Your City" class="formField" required />
     <button class="formSubmitButton submit" id="createFormSubmitButton">
       Send
     </button>
