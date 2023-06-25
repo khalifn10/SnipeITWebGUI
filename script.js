@@ -60,6 +60,7 @@ let getAccessories = async () => {
               columnLabels = Object.keys(accessoryForTable);
             })
 
+            console.log(`accessories`, rows);
             middleRows.innerHTML = ``;
             rows.forEach(row => {
               let newRow = document.createElement(`div`);
