@@ -73,3 +73,25 @@ a {
 .homePageLink {
     width: 25%;
 }
+
+form {
+    display: flex;
+    flex-direction: column;
+    grid-gap: 15px;
+}
+
+select, input, .formSubmitButton {
+    padding: 10px;
+}
+
+select {
+    color: #898585;
+}
+
+option {
+    color: black;
+}
+
+input::placeholder {
+    color: #898585;
+}

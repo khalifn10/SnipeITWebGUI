@@ -16,10 +16,32 @@
   </div>
   
   <form action="submit" class="createForm" id="createForm">
-    <input type="text" name="name" id="name" placeholder="Enter Your Name" class="formField" required />
-    <input type="text" name="city" id="city" placeholder="Enter Your City" class="formField" required />
-    <input type="text" name="price" id="price" placeholder="Enter Your Price" class="formField" required />
-    <button class="formSubmitButton submit" id="createFormSubmitButton">
+    <select name="company" id="company" class="company formField" value="Select Company" title="Select Company" required>
+      <option value="Select Company">Select Company</option>
+      <option value="Dedicated Networks">Dedicated Networks</option>
+    </select>
+    <input type="text" name="accessoryName" id="accessoryName" placeholder="Accessory Name" class="formField accessoryName" required />
+    <select name="category" id="category" class="category formField" value="Select Category" title="Select Category" required>
+      <option value="Select Category">Select Category</option>
+      <option value="Monitor">Monitor</option>
+      <option value="Dock">Dock</option>
+      <option value="Peripheral">Peripheral</option>
+    </select>
+    <select name="supplier" id="supplier" class="supplier formField" value="Select Supplier" title="Select Supplier" required>
+      <option value="Select Supplier">Select Supplier</option>
+      <option value="Amazon">Amazon</option>
+    </select>
+    <select name="manufacturer" id="manufacturer" class="manufacturer formField" value="Select Manufacturer" title="Select Manufacturer" required>
+      <option value="Select Manufacturer">Select Manufacturer</option>
+      <option value="Acer">Acer</option>
+    </select>
+    <select name="location" id="location" class="location formField" value="Select Location" title="Select Location" required>
+      <option value="Select Location">Select Location</option>
+      <option value="Dedicated Networks">Dedicated Networks</option>
+    </select>
+    <input type="text" name="model_number" id="model_number" placeholder="Model No." class="formField model_number" required />
+    <input type="text" name="order_number" id="order_number" placeholder="Order Number" class="formField order_number" required />
+    <button class="formSubmitButton submit" type="submit" id="createFormSubmitButton">
       Send
     </button>
   </form>

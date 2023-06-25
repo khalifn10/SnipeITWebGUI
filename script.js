@@ -14,6 +14,9 @@ let setLabelRows = (labels, rowsToAffectArray) => {
       let newColumn = document.createElement(`div`);
       newColumn.classList.add(`headerColumn`);
       newColumn.classList.add(`column`);
+      if (rowsToAffectArray.length == 2 && typeof label == `string`) {
+        newColumn.classList.add(label);
+      };
       newColumn.innerHTML = label;
 
       labelRow.append(newColumn);
