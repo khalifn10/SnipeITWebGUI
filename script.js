@@ -1,4 +1,4 @@
-let rows = [];
+let rows = JSON.parse(localStorage.getItem(`accessories`)) || [];
 let columnLabels = [];
 let getEL = (selector) => document.querySelector(selector);
 let headerRow = getEL(`.headerRow`);
@@ -64,6 +64,7 @@ let getAccessories = async () => {
             })
 
             console.log(`accessories`, rows);
+            localStorage.setItem(`accessories`, JSON.stringify(rows));
             middleRows.innerHTML = ``;
             rows.forEach(row => {
               let newRow = document.createElement(`div`);
@@ -84,4 +85,27 @@ let getAccessories = async () => {
     }
 }
 
-getAccessories();
+if (rows.length > 0) {
+  console.log(`loading local data`, rows);
+  middleRows.innerHTML = ``;
+  columnLabels = Object.keys(rows[0]);
+  setLabelRows(columnLabels, [headerRow, footerRow]);
+  rows.forEach(row => {
+    let newRow = document.createElement(`div`);
+    newRow.classList.add(`middleRow`);
+    newRow.classList.add(`row`);
+    let values = Object.values(row);
+    values.forEach(value => {
+      let newColumn = document.createElement(`div`);
+      newColumn.classList.add(`middleColumn`);
+      newColumn.classList.add(`column`);
+      newColumn.innerHTML = value;
+
+      newRow.append(newColumn); 
+    })
+    middleRows.append(newRow);
+  })
+} else {
+  console.log(`no data in database, fetching from API`);
+  getAccessories();
+}
