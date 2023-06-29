@@ -66,7 +66,7 @@ createForm.addEventListener(`submit`, (CreateFormSubmitEvent) => {
         .then(response => response.json())
         .then(data => {
             // console.log(`Data`, data);
-            window.location.href = window.location.origin;
+            window.location.href = `./`;
         })
         .catch(err => console.error(err));
     }
