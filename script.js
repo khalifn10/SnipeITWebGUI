@@ -1,4 +1,5 @@
-let rows = JSON.parse(localStorage.getItem(`accessories`)) || [];
+let useLocalStorage = true;
+let rows = useLocalStorage ? (JSON.parse(localStorage.getItem(`accessories`)) || []) : [];
 let columnLabels = [];
 let getEL = (selector) => document.querySelector(selector);
 let headerRow = getEL(`.headerRow`);
@@ -71,7 +72,30 @@ let getAccessories = async () => {
               newRow.classList.add(`middleRow`);
               newRow.classList.add(`row`);
               let values = Object.values(row);
-              setLabelRows(values, [newRow]);
+              values.forEach((value, valueIndex) => {
+                let thisColumnKey = Object.keys(row)[valueIndex];
+                let newColumn = document.createElement(`div`);
+                newColumn.classList.add(`middleColumn`);
+                newColumn.classList.add(`column`);
+                newColumn.classList.add(thisColumnKey);
+                if (thisColumnKey == `image` && value != ``) {
+                  let columnImage = document.createElement(`img`);
+                  columnImage.classList.add(`columnImage`);
+                  columnImage.alt = `Image`;
+                  columnImage.src = value;
+                  newColumn.append(columnImage);
+                } else if (thisColumnKey == `checkout` && value == true) {
+                  let columnCheckout = document.createElement(`button`);
+                  columnCheckout.classList.add(`columnCheckout`);
+                  columnCheckout.classList.add(`button`);
+                  columnCheckout.innerHTML = thisColumnKey;
+                  newColumn.append(columnCheckout);
+                } else {
+                  newColumn.innerHTML = value;
+                }
+
+                newRow.append(newColumn); 
+              })
               middleRows.append(newRow);
             })
            
@@ -85,7 +109,7 @@ let getAccessories = async () => {
     }
 }
 
-if (rows.length > 0) {
+if (rows.length > 0 && useLocalStorage) {
   console.log(`loading local data`, rows);
   middleRows.innerHTML = ``;
   columnLabels = Object.keys(rows[0]);
@@ -95,11 +119,27 @@ if (rows.length > 0) {
     newRow.classList.add(`middleRow`);
     newRow.classList.add(`row`);
     let values = Object.values(row);
-    values.forEach(value => {
+    values.forEach((value, valueIndex) => {
+      let thisColumnKey = Object.keys(row)[valueIndex];
       let newColumn = document.createElement(`div`);
       newColumn.classList.add(`middleColumn`);
       newColumn.classList.add(`column`);
-      newColumn.innerHTML = value;
+      newColumn.classList.add(thisColumnKey);
+      if (thisColumnKey == `image` && value != ``) {
+        let columnImage = document.createElement(`img`);
+        columnImage.classList.add(`columnImage`);
+        columnImage.alt = `Image`;
+        columnImage.src = value;
+        newColumn.append(columnImage);
+      } else if (thisColumnKey == `checkout` && value == true) {
+        let columnCheckout = document.createElement(`button`);
+        columnCheckout.classList.add(`columnCheckout`);
+        columnCheckout.classList.add(`button`);
+        columnCheckout.innerHTML = thisColumnKey;
+        newColumn.append(columnCheckout);
+      } else {
+        newColumn.innerHTML = value;
+      }
 
       newRow.append(newColumn); 
     })
