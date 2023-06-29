@@ -206,3 +206,16 @@ input::placeholder {
     margin: 0 auto;
     padding-bottom: 15px;
 }
+
+.middleColumn.checkout {
+    grid-gap: 5px;
+}
+
+.columnCheckout {
+    padding: 10px 5px;
+}
+
+.deleteButton {
+    background: red;
+    padding: 10px 7px;
+}
