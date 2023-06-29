@@ -1,22 +1,49 @@
+/* Put it on almost every website */
+/* Set it and Forget it */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-    background: black;
-    color: white;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 15px;
+    color: black;
+    background: #e8e8e8;
+    font-family: system-ui, -apple-system, Arial, Helvetica, sans-serif;
+}
+
+button {
+    font-size: 16px;
+    font-family: system-ui, -apple-system, Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    padding: 15px;
+}
+
+h2 {
+    margin: 0;
 }
 
 .accessoriesTable {
+    width: 100%;
     display: flex;
+    overflow: auto;
     align-items: center;
-    justify-content: space-between;
+    border-radius: 10px;
     flex-direction: column;
+    /* background: white; */
+    justify-content: space-between;
+    box-shadow: 0 0 3px #a7a7a7;
 }
 
 .row {
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 100%;
-    border: 3px solid white;
+    border: 1px solid #e2e2e2;
 }
 
 .middleRows {
@@ -25,20 +52,46 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    font-size: 14px;
 }
 
 .headerRow, .footerRow {
-    border-width: 2px;
+    border-width: 1px;
+    background: white;
+    font-weight: bold;
+    border-radius: 10px;
+    text-transform: capitalize;
+}
+
+.headerRow {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.footerRow {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
 }
 
 .middleRow {
-    border-left-width: 2px;
-    border-right-width: 2px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+    background: #ffffff;
+}
+
+.middleRow:nth-child(odd) {
+    background: #eeeeee;
 }
 
 .column {
     text-align: center;
-    border-right: 3px solid white;
+    /* border-right: 3px solid white; */
     min-width: 115px;
     max-width: 115px;
     min-height: 60px;
@@ -49,14 +102,45 @@ body {
     overflow: hidden;
 }
 
+.column.id {
+    min-width: 70px;
+}
+
+.column.minimum {
+    min-width: 85px;
+}
+
+.column.cost {
+    min-width: 40px;
+}
+
+.column.quantity, .column.remaining {
+    min-width: 85px;
+}
+
+.column.date {
+    min-width: 70px;
+}
+
+.column.supplier {
+    min-width: 180px;
+}
+
+.column.name, .column.company, .column.location {
+    min-width: 139px;
+}
+
+.columnImage {
+    width: 85%;
+    margin: 0 auto;
+}
+
 a {
     color: skyblue;
     text-align: center;
-    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 15px;
     text-decoration: none;
 }
 
@@ -64,6 +148,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 15px;
 }
 
 .pageHeaderRow h1 {
@@ -74,6 +159,19 @@ a {
     width: 25%;
 }
 
+.button {
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background: #4377b6;
+    padding: 10px 15px;
+    border-radius: 6px;
+    border: none;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -82,10 +180,14 @@ form {
 
 select, input, .formSubmitButton {
     padding: 10px;
+    border-radius: 6px;
+    border: none;
+    box-shadow: 0 0 3px 1px #d1d1d1;
 }
 
 select {
-    color: #898585;
+    color: black;
+    /* color: #898585; */
 }
 
 option {
@@ -94,4 +196,13 @@ option {
 
 input::placeholder {
     color: #898585;
+}
+
+.flexRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 95%;
+    margin: 0 auto;
+    padding-bottom: 15px;
 }
